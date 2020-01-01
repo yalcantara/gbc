@@ -1,0 +1,42 @@
+*/target/
+*/build/
+*/node_modules/
+*.classpath
+*.project
+*/.settings/
+*/.vscode/
+*/.idea/
+*/.gradle/
+*.iml
+*.jar
+*.bin
+*.lock
+
+######################
+# Windows
+######################
+# Windows image file caches
+Thumbs.db
+
+
+#Mac
+*.DS_Store
+
+######################
+# Intellij
+######################
+*/.idea/
+*/.iml
+*/.iws
+*/.ipr
+*/.ids
+*/.orig
+*/classes/
+*/out/
+
+######################
+# Maven
+######################
+/*/log/
+/*target/
+
