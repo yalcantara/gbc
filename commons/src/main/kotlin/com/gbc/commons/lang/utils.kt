@@ -4,6 +4,7 @@ import java.util.regex.Pattern
 import java.io.PrintWriter
 import java.io.StringWriter
 import java.text.Normalizer
+import java.util.ArrayList
 
 
 private val MARKS_PATTERN = Pattern.compile("\\p{InCombiningDiacriticalMarks}+")
@@ -17,7 +18,7 @@ fun pack(str: String?): String? {
     val s = str.trim()
 
     if (s.isEmpty() || s.isBlank()) {
-        return null;
+        return null
     }
     return s
 }
@@ -27,17 +28,17 @@ fun steam(str: String?): String? {
         return null
     }
 
-    var str = str.trim()
+    var ans = str.trim()
 
-    str = str.replace("\r\n", "").replace('\n', '\u0000').trim()
-    if (str.isEmpty()) {
+    ans = ans.replace("\r\n", "").replace('\n', '\u0000').trim()
+    if (ans.isEmpty()) {
         return null
     }
 
-    str = Normalizer.normalize(str, Normalizer.Form.NFD)
-    str = MARKS_PATTERN.matcher(str).replaceAll("")
-    str = str.toLowerCase()
-    return str
+    ans = Normalizer.normalize(ans, Normalizer.Form.NFD)
+    ans = MARKS_PATTERN.matcher(ans).replaceAll("")
+    ans = ans.toLowerCase()
+    return ans
 }
 
 
@@ -53,4 +54,16 @@ fun getStackTrace(t: Throwable?): String {
     t.printStackTrace(pw)
 
     return sw.toString()
+}
+
+
+
+
+fun toList(iter:Iterable<String>):ArrayList<String> {
+    val list = ArrayList<String>()
+
+    for (str in iter) {
+        list.add(str)
+    }
+    return list
 }
