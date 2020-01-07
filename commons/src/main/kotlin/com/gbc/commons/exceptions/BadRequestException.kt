@@ -1,7 +1,6 @@
-package com.gbc.commons.lang
+package com.gbc.commons.exceptions
 
-class InvalidParameterException:GbcException {
-
+open class BadRequestException:WebException {
     constructor(msg: String):super(msg)  {
     }
 

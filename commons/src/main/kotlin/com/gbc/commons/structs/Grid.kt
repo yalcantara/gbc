@@ -9,10 +9,6 @@ import kotlin.math.max
 
 class Grid {
 
-
-
-
-
     companion object {
         private val MAX_PRINT_ROWS = 200
         private val MAX_PRINT_COLS = 50
