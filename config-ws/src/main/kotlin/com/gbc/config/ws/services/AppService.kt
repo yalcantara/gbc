@@ -84,5 +84,9 @@ class AppService:AbstractService<App> {
         return ent
     }
 
+    @Transactional
+    fun delete(name: String){
+        deleteBy(fields = mapOf("name" to name))
+    }
 
 }

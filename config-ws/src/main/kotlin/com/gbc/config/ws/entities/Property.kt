@@ -3,10 +3,7 @@ package com.gbc.config.ws.entities
 import com.gbc.commons.entities.IAudit
 import java.io.Serializable
 import java.util.*
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 class Property: IAudit {
@@ -15,6 +12,9 @@ class Property: IAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     override var id: Long?              = null
+    @JoinColumn
+    @ManyToOne
+    var appId: App?                     = null
     var name:String?                    = null
     var label: String?                  = null
     override var dateCreated: Date?     = null
