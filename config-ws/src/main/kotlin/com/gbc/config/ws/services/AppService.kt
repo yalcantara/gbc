@@ -1,5 +1,6 @@
 package com.gbc.config.ws.services
 
+import com.gbc.commons.exceptions.BadRequestException
 import com.gbc.commons.exceptions.ConflictException
 import com.gbc.commons.lang.checkParamIsPositive
 import com.gbc.commons.lang.checkParamNotNull
@@ -29,13 +30,19 @@ class AppService:AbstractService<App> {
         return existBy(fields = mapOf("name" to name))
     }
 
+    fun checkExist(name: String){
+        if(exist(name)){
+            throw BadRequestException("The app '$name' does not exist.")
+        }
+    }
+
     override fun list():List<App>{
         return listBy(sorts = mapOf("name" to ASC))
     }
 
 
     fun checkNameIsAvailable(name: String) {
-        if (exist(name)) {
+        if (exist(name) == false) {
             throw ConflictException("The app '$name' already exists.")
         }
     }
