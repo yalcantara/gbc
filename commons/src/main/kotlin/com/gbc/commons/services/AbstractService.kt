@@ -154,6 +154,24 @@ abstract class AbstractService<E:IEntity>  {
         return q.resultList as List<E>
     }
 
+    protected fun deleteBy(fields: Map<String, Any?>):Int{
+        checkParamNotEmpty("fields", fields)
+
+        var jpql: String =
+            """
+                delete e
+                from $entityName e
+            """
+        val and = _and(fields)
+        jpql += " where $and"
+
+        val q = em.createQuery(jpql)
+        q.maxResults = 1
+        val ans = q.executeUpdate()
+        em.flush()
+        return ans
+    }
+
 
     protected fun checkField(value: Any?){
         checkParamNotNull("value", value)
